@@ -1,5 +1,7 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -8,4 +10,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@import url("./assets/style/reset.css");
+@import url("./assets/style/iconfont.css");
+</style>
