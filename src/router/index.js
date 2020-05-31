@@ -1,7 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import WelCome from "../components/WelCome.vue";
+import Users from "../components/Users.vue";
 
 Vue.use(VueRouter);
+
+//push
+const VueRouterPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(to) {
+  return VueRouterPush.call(this, to).catch((err) => err);
+};
+
+//replace
+const VueRouterReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(to) {
+  return VueRouterReplace.call(this, to).catch((err) => err);
+};
 
 const routes = [
   {
@@ -17,10 +31,23 @@ const routes = [
     path: "/home",
     name: "home",
     component: () => import("../pages/Home.vue"),
+    redirect: "/welCome",
     meta: {
       // 需要登录才能加载页面
       requiresAuth: true,
     },
+    children: [
+      {
+        path: "/welCome",
+        name: "welCome",
+        component: WelCome,
+      },
+      {
+        path: "/users",
+        name: "users",
+        component: Users,
+      },
+    ],
   },
 ];
 

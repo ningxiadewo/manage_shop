@@ -1,10 +1,13 @@
 <template>
   <div class="login_container">
     <div class="login_box">
+      <!-- 标题 -->
       <div class="title">
         <h1>后台管理系统</h1>
       </div>
+      <!-- 内容 -->
       <div class="content">
+        <!-- 表单 -->
         <el-form
           :rules="loginRules"
           ref="loginFormRef"
@@ -27,6 +30,7 @@
             ></el-input>
           </el-form-item>
         </el-form>
+        <!-- 按钮 -->
         <div class="login-btn">
           <el-button type="primary" @click="login">登录</el-button>
           <el-button type="primary" @click="resetLogin" plain>重置</el-button>
@@ -78,8 +82,6 @@ export default {
         if (valid) {
           // valid为true 符合验证，可以登录
           const res = await this.$http.post("/login", this.loginForm);
-          console.log(res);
-
           if (res.meta.status === 200) {
             // 登录成功
             this.$message.success("登录成功");
@@ -111,7 +113,7 @@ export default {
     height: 300px;
     border-radius: 10px;
     background-color: #fff;
-    margin: -200px 0 0 -200px;
+    margin: -175px 0 0 -200px;
     .title {
       line-height: 40px;
       text-align: center;
