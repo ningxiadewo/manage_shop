@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import WelCome from "../components/WelCome.vue";
 import Users from "../components/Users.vue";
+import Rights from "../components/power/Rights.vue";
+import Roles from "../components/power/Roles.vue";
 
 Vue.use(VueRouter);
 
@@ -46,6 +48,16 @@ const routes = [
         path: "/users",
         name: "users",
         component: Users,
+      },
+      {
+        path: "/rights",
+        name: "rights",
+        component: Rights,
+      },
+      {
+        path: "/roles",
+        name: "Roles",
+        component: Roles,
       },
     ],
   },

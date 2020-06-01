@@ -24,6 +24,11 @@ import {
   Pagination,
   Dialog,
   MessageBox,
+  Tag,
+  Tooltip,
+  Tree,
+  Select,
+  Option,
 } from "element-ui";
 
 Vue.use(Button);
@@ -48,6 +53,11 @@ Vue.use(TableColumn);
 Vue.use(Switch);
 Vue.use(Pagination);
 Vue.use(Dialog);
+Vue.use(Tag);
+Vue.use(Tooltip);
+Vue.use(Tree);
+Vue.use(Select);
+Vue.use(Option);
 
 // 把message挂载到原型上
 Vue.prototype.$message = Message;
