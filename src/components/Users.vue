@@ -465,7 +465,6 @@ export default {
     },
     // 确定分配角色
     async confirmAssignUser() {
-      console.log(1);
       
       const res = await this.$http.put(`users/${this.assignRoleForm.id}/role`, {
         rid: this.assignCheckedRoleId

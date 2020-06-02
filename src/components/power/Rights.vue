@@ -59,4 +59,3 @@ export default {
 </script>
 
 <style lang="less" scoped></style>
-git branch -d

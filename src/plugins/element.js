@@ -29,6 +29,7 @@ import {
   Tree,
   Select,
   Option,
+  Cascader,
 } from "element-ui";
 
 Vue.use(Button);
@@ -58,6 +59,7 @@ Vue.use(Tooltip);
 Vue.use(Tree);
 Vue.use(Select);
 Vue.use(Option);
+Vue.use(Cascader);
 
 // 把message挂载到原型上
 Vue.prototype.$message = Message;

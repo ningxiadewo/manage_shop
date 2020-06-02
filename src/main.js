@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import "./plugins/element.js";
 import Axios from "axios";
+// 引入树形控件
+import tableTree from "vue-table-with-tree-grid";
 
 Vue.config.productionTip = false;
 
@@ -25,6 +27,10 @@ Axios.interceptors.response.use(
     console.log("响应拦截失败");
   }
 );
+
+// Vue.use(tableTree);
+// 全局注册树形表格
+Vue.component("tree-table", tableTree);
 
 // 挂载到原型上
 Vue.prototype.$http = Axios;
