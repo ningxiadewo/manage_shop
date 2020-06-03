@@ -1,4 +1,5 @@
 <template>
+  <!-- 商品分类 -->
   <div class="goods-categories">
     <!-- 头部面包屑 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -247,12 +248,13 @@ export default {
       // 请求所有的分类
       const res = await this.$http.get("categories", {
         params: {
-          type: 3,
+          type: 2,
         },
       });
       if (res.meta.status !== 200) {
         return this.$message.error("获取商品分类列表失败");
       }
+
       // 获取商品分离列表成功
       this.addCatesFatherList = res.data;
     },

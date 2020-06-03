@@ -25,6 +25,7 @@ Axios.interceptors.response.use(
   (arr) => {
     console.log(arr);
     console.log("响应拦截失败");
+    alert("请查看网络");
   }
 );
 
