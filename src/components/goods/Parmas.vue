@@ -45,13 +45,20 @@
             <el-table-column type="expand">
               <template slot-scope="slotScope">
                 <!-- 显示属性 -->
-                <el-tag
+                <div
+                  style="display: inline-block"
                   v-if="slotScope.row.attr_vals.length !== 0"
-                  v-for="(item, index) in slotScope.row.attr_vals"
-                  :key="index"
-                  style="margin-right: 20px"
-                  >{{ item }}</el-tag
                 >
+                  <el-tag
+                    v-for="(item, index) in slotScope.row.attr_vals"
+                    :key="index"
+                    style="margin-right: 20px"
+                    closable
+                    @close="removeVal(index, slotScope.row)"
+                    >{{ item }}</el-tag
+                  >
+                </div>
+
                 <!-- 添加新的属性 -->
                 <el-input
                   class="input-new-tag"
@@ -98,13 +105,20 @@
             <el-table-column type="expand">
               <template slot-scope="slotScope">
                 <!-- 显示属性 -->
-                <el-tag
+                <div
+                  style="display: inline-block"
                   v-if="slotScope.row.attr_vals.length !== 0"
-                  v-for="(item, index) in slotScope.row.attr_vals"
-                  :key="index"
-                  style="margin-right: 20px"
-                  >{{ item }}</el-tag
                 >
+                  <el-tag
+                    v-for="(item, index) in slotScope.row.attr_vals"
+                    :key="index"
+                    style="margin-right: 20px"
+                    closable
+                    @close="removeVal(index, slotScope.row)"
+                    >{{ item }}</el-tag
+                  >
+                </div>
+
                 <!-- 添加新的属性 -->
                 <el-input
                   class="input-new-tag"
@@ -271,6 +285,7 @@ export default {
       // 若选择不等于三级，则清空选择框内容内容
       if (this.catesIdArr.length !== 3) {
         this.catesIdArr = [];
+        this.ParamsList = [];
         this.$message.error("要选择第三级才可设置参数");
         return;
       }
@@ -424,6 +439,17 @@ export default {
       row.attr_vals.push(row.newinputValue);
       row.newInputVisible = false;
       // 提交请求
+      this.saveAttrVals(row);
+    },
+    // 删除属性值
+    removeVal(i, row) {
+      // 本地删除属性值
+      row.attr_vals.splice(i, 1);
+      // 提交到后台
+      this.saveAttrVals(row);
+    },
+    // 保存属性值到后台
+    async saveAttrVals(row) {
       const res = await this.$http.put(
         `categories/${this.catesIdArr[this.catesIdArr.length - 1]}/attributes/${
           row.attr_id
@@ -435,10 +461,10 @@ export default {
         }
       );
       if (res.meta.status !== 200) {
-        return this.$message.error("添加属性失败");
+        return this.$message.error("修改属性失败");
       }
       // 添加属性成功
-      this.$message.success("属性添加成功");
+      this.$message.success("属性修改成功");
     },
   },
 };

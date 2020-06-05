@@ -353,7 +353,4 @@ export default {
     margin-top: 20px;
   }
 }
-.el-cascader-panel {
-  height: 200px !important;
-}
 </style>

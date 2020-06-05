@@ -29,6 +29,19 @@ Axios.interceptors.response.use(
   }
 );
 
+// 全局过滤器
+Vue.filter("formatTime", function(date) {
+  const time = new Date(date);
+  // 计算年，月...秒
+  const year = time.getFullYear();
+  const month = (time.getMonth() + "").padStart(2, "0");
+  const day = (time.getDay() + "").padStart(2, "0");
+  const h = (time.getHours() + "").padStart(2, "0");
+  const m = (time.getMinutes() + "").padStart(2, "0");
+  const s = (time.getSeconds() + "").padStart(2, "0");
+  return `${year}-${month}-${day} ${h}-${m}-${s}`;
+});
+
 // Vue.use(tableTree);
 // 全局注册树形表格
 Vue.component("tree-table", tableTree);
