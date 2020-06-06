@@ -8,6 +8,7 @@ import Categories from "../components/goods/Categories.vue";
 import Params from "../components/goods/Parmas.vue";
 import Lists from "../components/goods/Lists.vue";
 import Add from "../components/goods/Add.vue";
+import Orders from "../components/Orders.vue";
 
 Vue.use(VueRouter);
 
@@ -82,6 +83,11 @@ const routes = [
         path: "/goods/add",
         name: "add",
         component: Add,
+      },
+      {
+        path: "/orders",
+        name: "orders",
+        component: Orders,
       },
     ],
   },

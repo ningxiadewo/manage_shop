@@ -39,7 +39,7 @@ Vue.filter("formatTime", function(date) {
   const h = (time.getHours() + "").padStart(2, "0");
   const m = (time.getMinutes() + "").padStart(2, "0");
   const s = (time.getSeconds() + "").padStart(2, "0");
-  return `${year}-${month}-${day} ${h}-${m}-${s}`;
+  return `${year}-${month}-${day} ${h}:${m}:${s}`;
 });
 
 // Vue.use(tableTree);
