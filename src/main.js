@@ -5,6 +5,8 @@ import "./plugins/element.js";
 import Axios from "axios";
 // 引入树形控件
 import tableTree from "vue-table-with-tree-grid";
+// 引入echarts
+import echarts from "echarts";
 
 Vue.config.productionTip = false;
 

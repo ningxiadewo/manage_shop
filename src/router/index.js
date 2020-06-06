@@ -9,6 +9,7 @@ import Params from "../components/goods/Parmas.vue";
 import Lists from "../components/goods/Lists.vue";
 import Add from "../components/goods/Add.vue";
 import Orders from "../components/Orders.vue";
+import Reports from "../components/Reports.vue";
 
 Vue.use(VueRouter);
 
@@ -88,6 +89,11 @@ const routes = [
         path: "/orders",
         name: "orders",
         component: Orders,
+      },
+      {
+        path: "/reports",
+        name: "reports",
+        component: Reports,
       },
     ],
   },
