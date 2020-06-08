@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -54,28 +55,28 @@ export default {
   },
   created() {},
   async mounted() {
-    // 按需引入excharts
-    // 引入 ECharts 主模块
-    var echarts = require("echarts/lib/echarts");
-    // 引入柱状图
-    require("echarts/lib/chart/bar");
-    // 引入提示框和标题组件
-    require("echarts/lib/component/tooltip");
-    require("echarts/lib/component/title");
+    // // 按需引入excharts
+    // // 引入 ECharts 主模块
+    // var echarts = require("echarts/lib/echarts");
+    // // 引入柱状图
+    // require("echarts/lib/chart/bar");
+    // // 引入提示框和标题组件
+    // require("echarts/lib/component/tooltip");
+    // require("echarts/lib/component/title");
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById("reports-main"));
+    var myChart = this.$echarts.init(document.getElementById("reports-main"));
 
     // 获取数据列表数据
-    const res = await this.$http.get("reports/type/1");
+    let res = await this.$http.get("reports/type/1");
     if (res.meta.status !== 200) {
       return this.$message.error("获取数据列表失败");
     }
 
     Object.assign(this.reportsList, this.options, res.data);
+    // console.log(this.reportsList);
 
     myChart.setOption(this.reportsList);
   },
-  methods: {},
 };
 </script>
 

@@ -1,15 +1,70 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import WelCome from "../components/WelCome.vue";
-import Users from "../components/Users.vue";
-import Rights from "../components/power/Rights.vue";
-import Roles from "../components/power/Roles.vue";
-import Categories from "../components/goods/Categories.vue";
-import Params from "../components/goods/Parmas.vue";
-import Lists from "../components/goods/Lists.vue";
-import Add from "../components/goods/Add.vue";
-import Orders from "../components/Orders.vue";
-import Reports from "../components/Reports.vue";
+
+// 把Login、Home、WelCome分在一个模块
+const Login = () =>
+  import(/* webpackChunkName: "login-home-welcome" */ "../pages/Login.vue");
+const Home = () =>
+  import(/* webpackChunkName: "login-home-welcome" */ "../pages/Home.vue");
+const WelCome = () =>
+  import(
+    /* webpackChunkName: "login-home-welcome" */ "../components/WelCome.vue"
+  );
+
+// import WelCome from "../components/WelCome.vue";
+// import Users from "../components/Users.vue";
+// import Rights from "../components/power/Rights.vue";
+// import Roles from "../components/power/Roles.vue";
+
+// 把Users、Right、Roles分在一个模块
+const Users = () =>
+  import(
+    /* webpackChunkName: "users-rights-roles" */ "../components/Users.vue"
+  );
+const Rights = () =>
+  import(
+    /* webpackChunkName: "users-rights-roles" */ "../components/power/Rights.vue"
+  );
+const Roles = () =>
+  import(
+    /* webpackChunkName: "users-rights-roles" */ "../components/power/Roles.vue"
+  );
+
+// Categories Params Lists
+// import Categories from "../components/goods/Categories.vue";
+// import Params from "../components/goods/Parmas.vue";
+// import Lists from "../components/goods/Lists.vue";
+
+const Categories = () =>
+  import(
+    /* webpackChunkName: "categories-params-lists" */ "../components/goods/Categories.vue"
+  );
+const Params = () =>
+  import(
+    /* webpackChunkName: "categories-params-lists" */ "../components/goods/Parmas.vue"
+  );
+const Lists = () =>
+  import(
+    /* webpackChunkName: "categories-params-lists" */ "../components/goods/Lists.vue"
+  );
+
+// import Add from "../components/goods/Add.vue";
+// import Orders from "../components/Orders.vue";
+// import Reports from "../components/Reports.vue";
+
+// Add、Orders、Reports
+const Add = () =>
+  import(
+    /* webpackChunkName: "add-orders-reports" */ "../components/goods/Add.vue"
+  );
+const Orders = () =>
+  import(
+    /* webpackChunkName: "add-orders-reports" */ "../components/Orders.vue"
+  );
+const Reports = () =>
+  import(
+    /* webpackChunkName: "add-orders-reports" */ "../components/Reports.vue"
+  );
 
 Vue.use(VueRouter);
 
@@ -33,12 +88,12 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("../pages/Login.vue"),
+    component: Login,
   },
   {
     path: "/home",
     name: "home",
-    component: () => import("../pages/Home.vue"),
+    component: Home,
     redirect: "/welCome",
     meta: {
       // 需要登录才能加载页面

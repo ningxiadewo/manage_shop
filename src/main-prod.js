@@ -1,12 +1,19 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import "./plugins/element.js";
+// import "./plugins/element.js";
 import Axios from "axios";
 // 引入树形控件
 import tableTree from "vue-table-with-tree-grid";
+
 // 引入echarts
 import echarts from "echarts";
+
+// 引入进度条
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
+Vue.prototype.$echarts = echarts;
 
 Vue.config.productionTip = false;
 
@@ -17,11 +24,15 @@ Axios.interceptors.request.use((config) => {
   // 设置请求头 加入token
   const token = window.sessionStorage.getItem("token");
   config.headers.Authorization = token;
+  // 添加进度条
+  NProgress.start();
   return config;
 });
 // 响应拦截
 Axios.interceptors.response.use(
   (res) => {
+    // 停止进度条
+    NProgress.done();
     return res.data;
   },
   (arr) => {
